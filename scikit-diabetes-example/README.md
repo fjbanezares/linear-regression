@@ -38,3 +38,34 @@ diabetes_X_test = diabetes_X[-20:]
 diabetes_y_train = diabetes_y[:-20]
 diabetes_y_test = diabetes_y[-20:]
 ```
+
+### Train the model
+
+```python
+# Create linear regression object
+regr = linear_model.LinearRegression()
+
+# Train the model using the training sets
+regr.fit(diabetes_X_train, diabetes_y_train)
+
+```
+
+### Make predictions
+
+```python
+# Make predictions using the testing set
+diabetes_y_pred = regr.predict(diabetes_X_test)
+```
+
+
+### Have a look to error coefficients
+
+```python
+# The coefficients
+print("Coefficients: \n", regr.coef_)
+# The mean squared error
+print("Mean squared error: %.2f" % mean_squared_error(diabetes_y_test, diabetes_y_pred))
+# The coefficient of determination: 1 is perfect prediction
+print("Coefficient of determination: %.2f" % r2_score(diabetes_y_test, diabetes_y_pred))
+```
+
