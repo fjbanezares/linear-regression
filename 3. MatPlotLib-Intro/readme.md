@@ -37,7 +37,10 @@ Random_Dist_Y = np.random.uniform(0,1,1000)
 
 fig ,ax = plt.subplots()
 ax.scatter(Random_Dist_X, Random_Dist_Y)
+ax.axis([-0.5,1.5,-0.5,1.5])
 fig.show()
+
+
 ```
 
 ### Bar
@@ -63,7 +66,7 @@ fig = plt.figure()
 plt.plot(time, height)
 # First new axes
 ax1 = fig.add_axes([0.43, 0.6, 0.15, 0.15])
-ax1.hist(height)
+ax1.hist(height, color='green')
 # Second new axes
 ax2 = fig.add_axes([0.2, 0.3, 0.1, 0.1])
 ax2.plot(time, time**2)
@@ -148,6 +151,29 @@ ax2 = fig.add_subplot(gs[:, 1])
 ax2.plot(time, score)
 ax3 = fig.add_axes([0.6, 0.6, 0.2, 0.2])
 ax3.hist(distribution)
+plt.show()
+```
+
+# Actors Layer
+
+```python
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+fig = Figure()
+canvas = FigureCanvas(fig)
+x = np.random.randn(10000)
+ax = fig.add_subplot(111)
+ax.hist(x, 100)
+ax.set_title('Normal distribution with $\mu=0, \sigma=1$')
+fig.savefig('matplotlib_histogram.png')
+```
+
+```python
+import matplotlib.pyplot as plt
+x = np.random.randn(10000)
+plt.hist(x, 100)
+plt.title(r'Normal distribution with $\mu=0, \sigma=1$')
+plt.savefig('matplotlib_histogram.png')
 plt.show()
 ```
 
